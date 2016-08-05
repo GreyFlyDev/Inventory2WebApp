@@ -56,12 +56,23 @@ namespace InventoryWebApp.Controllers
             if (ModelState.IsValid)
             {
                 int productId = (int)TempData["ProductId"];
+                var product = db.Products.Where(p => p.ProductId == productId).FirstOrDefault();
 
                 restock.Date = DateTime.Now;
                 restock.UserId = User.Identity.GetUserId().ToString();
                 restock.ProductId = productId;
 
                 db.Restocks.Add(restock);
+                db.SaveChanges();
+
+                product.Quantity += restock.Quantity;
+                product.TotalInvestment += restock.TotalCost;
+                db.SaveChanges();
+
+                product.PurchasePricePerUnit = product.TotalInvestment / product.Quantity;
+                if (product.PurchasePricePerUnit < 0)
+                    product.PurchasePricePerUnit = 0;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
