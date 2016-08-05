@@ -13,6 +13,7 @@ namespace InventoryWebApp.Controllers
 {
     public class SalesController : Controller
     {
+        [Authorize]
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Sales

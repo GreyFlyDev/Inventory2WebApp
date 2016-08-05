@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace InventoryWebApp.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
