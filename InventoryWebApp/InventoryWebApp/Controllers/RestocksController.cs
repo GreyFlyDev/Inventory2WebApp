@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using InventoryWebApp.Models;
+using Microsoft.AspNet.Identity;
 
 namespace InventoryWebApp.Controllers
 {
@@ -17,6 +18,8 @@ namespace InventoryWebApp.Controllers
         // GET: Restocks
         public ActionResult Index()
         {
+            string userId = User.Identity.GetUserId();
+            var restocks = db.Restocks.Where(r => r.UserId == userId);
             return View(db.Restocks.ToList());
         }
 
