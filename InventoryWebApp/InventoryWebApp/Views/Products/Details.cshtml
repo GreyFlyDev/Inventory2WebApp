@@ -1,0 +1,82 @@
+﻿@model InventoryWebApp.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalePricePerUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalePricePerUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchasePricePerUnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchasePricePerUnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalInvestment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalInvestment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfSales)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfSales)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateAdded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateAdded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
