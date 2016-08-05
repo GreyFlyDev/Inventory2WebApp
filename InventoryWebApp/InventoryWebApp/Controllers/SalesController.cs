@@ -11,9 +11,9 @@ using Microsoft.AspNet.Identity;
 
 namespace InventoryWebApp.Controllers
 {
+    [Authorize]
     public class SalesController : Controller
     {
-        [Authorize]
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Sales
@@ -55,6 +55,11 @@ namespace InventoryWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                sale.SalePricePerUnit = 0;
+                sale.TotalCost = 0;
+                sale.ProductId = 0;
+                sale.UserId = User.Identity.GetUserId().ToString();
+
                 db.Sales.Add(sale);
                 db.SaveChanges();
                 return RedirectToAction("Index");
