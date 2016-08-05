@@ -65,8 +65,8 @@
             @Html.DisplayFor(modelItem => item.UserId)
         </td>
         <td>
-            @Html.ActionLink("Make Sale", "Create", "Sales", new { id = item.ProductId }) |
-            @Html.ActionLink("Restock", "Create", "Restocks", new { id = item.ProductId }) |
+            @Html.ActionLink("Make Sale", "Create", "Sales", new { id = item.ProductId }, null) |
+            @Html.ActionLink("Restock", "Create", "Restocks", new { id = item.ProductId }, null) |
             @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
             @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
