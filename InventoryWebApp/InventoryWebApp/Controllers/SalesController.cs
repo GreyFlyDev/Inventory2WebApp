@@ -41,8 +41,9 @@ namespace InventoryWebApp.Controllers
         }
 
         // GET: Sales/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+            TempData["ProductId"] = id;
             return View();
         }
 
@@ -55,9 +56,12 @@ namespace InventoryWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                sale.SalePricePerUnit = 0;
-                sale.TotalCost = 0;
-                sale.ProductId = 0;
+                int productId = (int)TempData["ProductId"];
+                var product = db.Products.Where(p => p.ProductId == productId).FirstOrDefault();
+
+                sale.SalePricePerUnit = product.SalePricePerUnit;
+                sale.TotalCost = product.SalePricePerUnit * sale.Quantity;
+                sale.ProductId = productId;
                 sale.UserId = User.Identity.GetUserId().ToString();
 
                 db.Sales.Add(sale);
